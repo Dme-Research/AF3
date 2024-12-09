@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PAE plot</title>
+    <style>
+        .red {
+            color: red;  /* 赤色に設定 */
+        }
+        .blue {
+            color: blue;  /* シアン色に設定 */
+        }
+    </style>
+  </head>
+<body onload="initViewer();">
+  <center>
+    <h3>Dimer structure predicted by alphafold2</h3>
+    <div id="comments">
+      <h4>AF2 prediction score = 0.75</h4>
+      <p><span class="red">AANATL4</span> _ <span class="blue">piwi</span></p>
+    </div>
+<script src="https://3Dmol.org/build/3Dmol-min.js"></script>
+<script src="https://3Dmol.org/build/3Dmol.ui-min.js"></script>
+      <div style="height: 600px; width: 600px; position: relative;" class='viewer_3Dmoljs' 
+         data-href="AANATL4_piwi_rank_0_multimer_v2_pred_0.pdb" data-backgroundcolor='0xffffff' 
+         data-select1='chain:A' data-style1='cartoon:color=red' data-surface1='opacity:.7;color:white' 
+        data-select2='chain:B' data-style2='cartoon:color=0x4aa6ff'
+       </div>
+  </center>
+  <body>
+</html>
