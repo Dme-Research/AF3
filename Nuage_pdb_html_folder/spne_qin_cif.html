@@ -4,41 +4,27 @@
     <title>PAE plot</title>
     <style>
         .red {
-            color: red;
+            color: red;  /* 赤色に設定 */
         }
         .blue {
-            color: blue;
-        }
-        .viewer_3Dmoljs {
-            background-color: #ffffff; /* ビューア背景を白に設定 */
+            color: blue;  /* シアン色に設定 */
         }
     </style>
   </head>
 <body onload="initViewer();">
   <center>
-    <h3>Dimer structure predicted by AlphaFold2</h3>
+    <h3>Dimer structure predicted by alphafold2</h3>
     <div id="comments">
       <h4>AF3 ipTM score = 0.61</h4>
       <p><span class="red">SpnE</span> _ <span class="blue">Qin</span></p>
     </div>
 <script src="https://3Dmol.org/build/3Dmol-min.js"></script>
-<script>
-    function initViewer() {
-        const viewer = $3Dmol.createViewer($(".viewer_3Dmoljs")[0], { backgroundColor: "white" });
-
-        // CIFファイルを読み込む
-        viewer.addModelFromUrl("fold_spne_qin_model_0.cif", "cif", function() {
-            viewer.setStyle({ chain: "A" }, { cartoon: { color: "red" } });
-            viewer.setStyle({ chain: "A", resi: [1, 100] }, { cartoon: { color: "green" } });
-            viewer.setStyle({ chain: "B" }, { cartoon: { color: "blue" } });
-
-            viewer.zoomTo();
-            viewer.render();
-        });
-    }
-</script>
-<div style="height: 600px; width: 600px; position: relative;" class="viewer_3Dmoljs"></div>
+<script src="https://3Dmol.org/build/3Dmol.ui-min.js"></script>
+      <div style="height: 600px; width: 600px; position: relative;" class='viewer_3Dmoljs' 
+         data-href="fold_spne_qin_model_0.cif" data-backgroundcolor='0xffffff' 
+         data-select1='chain:A' data-style1='cartoon:color=red' data-surface1='opacity:.7;color:white' 
+        data-select2='chain:B' data-style2='cartoon:color=0x4aa6ff'
+       </div>
   </center>
-</body>
+  <body>
 </html>
-
