@@ -19,12 +19,44 @@
       <p><span class="red">SpnE</span> _ <span class="blue">Qin</span></p>
     </div>
 <script src="https://3Dmol.org/build/3Dmol-min.js"></script>
-<script src="https://3Dmol.org/build/3Dmol.ui-min.js"></script>
-      <div style="height: 600px; width: 600px; position: relative;" class='viewer_3Dmoljs' 
-         data-href="fold_spne_qin_model_0.cif" data-backgroundcolor='0xffffff' 
-         data-select1='chain:A' data-style1='cartoon:color=red' data-surface1='opacity:.7;color:white' 
-        data-select2='chain:B' data-style2='cartoon:color=0x4aa6ff'
-       </div>
+<script>
+    function initViewer() {
+        // Viewerの作成
+        const viewer = $3Dmol.createViewer($(".viewer_3Dmoljs")[0], {backgroundColor: "white"});
+        
+        // CIFファイルを読み込む
+        viewer.addModelFromUrl("fold_spne_qin_model_0.cif", "cif", function() {
+            // Chain A全体を赤に設定
+            viewer.setStyle(
+                {chain: "A"},
+                {cartoon: {color: "red"}}
+            );
+
+            // Chain Aの残基1〜100を緑色に設定
+            viewer.setStyle(
+                {chain: "A", resi: [1, 100]},
+                {cartoon: {color: "green"}}
+            );
+
+            // Chain Bを青色に設定
+            viewer.setStyle(
+                {chain: "B"},
+                {cartoon: {color: "#4aa6ff"}}
+            );
+
+            // 表面を半透明で描画
+            viewer.addSurface($3Dmol.SurfaceType.SES, {
+                opacity: 0.7,
+                color: "white"
+            });
+
+            // 描画
+            viewer.zoomTo();
+            viewer.render();
+        });
+    }
+</script>
+<div style="height: 600px; width: 600px; position: relative;" class="viewer_3Dmoljs"></div>
   </center>
-  <body>
+</body>
 </html>
